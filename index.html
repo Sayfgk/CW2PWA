@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<htmllang="en">
+
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script scr="http://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="manifest" href="/manifest.json">
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <img id='logo' src="Wolf.png" alt="logo" style="width:300px;height:200px;">
+                <div id='searchbox'>search box</div>
+                <button>Login</button>
+                <button>Registration</button>
+            </header>
+            <aside>
+                <center><div class="home">Home</div>
+                <div class="lessons">Lessons</div>
+                <div class="user">User</div></center>
+            </aside>
+            <center><main>
+                <div class="product">English</div>
+                <img src="english.png" alt="English" style="width:175px;height:150px;">
+                <div class="product">History</div>
+                <img src="History.jpg" alt="History" style="width:175px;height:150px;">
+                <div class="product">IT</div>
+                <img src="IT.png" alt="IT" style="width:175px;height:150px;">
+                <div class="product">Maths</div>
+                <img src="Maths.png" alt="Maths" style="width:175px;height:150px;">
+                <div class="product">Science</div>
+                <img src="Science.png" alt="Science" style="width:175px;height:150px;">
+            </main></center>
+        </div>
+    </body>
+
+    </html>
+    <div id="userform">
+        <spanv-if='currentUser'>
+            {{currentUser}}
+            <button @click='signout'>Sign out</button>
+            </span>
+            <spanv-else>
+                email <input v-model='email'>
+                password <input type='password' v-model='password'>
+                <button v-on:click='signin'>Sign in</button>
+                <input type="radio" id="option1" value="student" v-model="userType"></input>
+                <label for="option1"> Provider</label>
+                <input type="radio" id="option2" value="provider" v-model="userType"></input>
+                <label for="option2"> Provider</label>
+                <button v-on:click='signup'>Sign up</button>
+                {{userMessage}}
+                </span>
+    </div>
+
+    <script>
+        var userform = new Vue({
+            el: "#userform",
+            data: {
+                currentUser: '',
+                email: '',
+                password: '',
+                userMessage: ''
+            },
+            methods: {
+                signup: function () {
+                    this.userMessage = '';
+
+                    // more validation should be included
+                    if (!this.email) {
+                        this.userMessage = 'error: empty email'; return
+                    }
+                    if (!this.password) {
+                        this.userMessage = 'error: empty password';
+                        return;
+                    }
+                    var newUser = {
+                        'email': this.email, 'password': this.password
+                    }
+                    // a user array should be used
+                    localStorage.setItem('users', JSON.stringify(newUser))
+                },
+
+                var users = '',
+                var newEmail = this.email,
+
+                if(localStorage.getItem('users'));    // 'users' is an array of objects
+        users = JSON.parse(localStorage.getItem('users'));
+
+        if (users) {
+            if (users.some(function (user) { returnuser.email === newEmail })) {
+                alert('Email already exists!');
+                return;
+            }
+            users.push({ 'email': newEmail, 'password': this.password });
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+        else {
+            users = [{ 'email': newEmail, 'password': this.password }];
+            localStorage.setItem('users', JSON.stringify(users));
+
+        }
+        signin: function () {
+            var savedUser = JSON.parse(localStorage.getItem('users'));
+            if (savedUser.email == this.email && savedUser.password == this.password) {
+                this.currentUser = this.email;
+            }
+            else {
+                this.userMessage = ' error: username or password is not correct.'; return;
+            }
+        }
+        signout: function () {
+            this.currentUser = '';
+            this.email = '';
+            this.password = '';
+        }
+    </script>

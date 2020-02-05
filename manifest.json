@@ -1,0 +1,43 @@
+{
+    "name": "Sayfs Progressive Web App",
+    "short_name": "Sayf PWA",
+    "description": "making this work offline using PWA and Javascript", "icons": [
+    {
+    "src": "cw2/data/images/english.png", 
+    "sizes": "32x32",
+    "type": "image/png"
+    },
+
+    {
+        "src": "cw2/data/images/History.png", 
+        "sizes": "32x32",
+        "type": "image/png"
+        },
+
+        {
+            "src": "cw2/data/images/IT.png", 
+            "sizes": "32x32",
+            "type": "image/png"
+            },
+
+            {
+                "src": "cw2/data/images/Maths.png", 
+                "sizes": "32x32",
+                "type": "image/png"
+                },
+
+                {
+                    "src": "cw2/data/images/Science.png", 
+                    "sizes": "32x32",
+                    "type": "image/png"
+                    },
+{
+    "src": "icons/icon-512.png", 
+    "sizes": "512x512",
+    "type": "image/png"
+    } ],
+    "start_url": "index.html", 
+    "display": "fullscreen",
+    "theme_color": "#B12A34",
+    "background_color": "#B12A34"
+    }
